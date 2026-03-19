@@ -1,4 +1,5 @@
 from mcp.server.fastmcp import FastMCP
+from mcp.server.transport_security import TransportSecuritySettings
 import requests
 import jwt
 import os
@@ -12,9 +13,9 @@ JWT_ALGORITHM = "HS256"
 
 mcp = FastMCP(
     "Points & Subscriptions Server v2",
-    host="0.0.0.0",
-    port=8000,
-    allowed_hosts=["web-production-fd7e0.up.railway.app", "localhost"]
+    transport_security=TransportSecuritySettings(
+        enable_dns_rebinding_protection=False
+    )
 )
 
 API_BASE = "https://jsonplaceholder.typicode.com"
