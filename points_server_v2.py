@@ -10,7 +10,12 @@ load_dotenv()
 JWT_SECRET = os.getenv("JWT_SECRET")
 JWT_ALGORITHM = "HS256"
 
-mcp = FastMCP("Points & Subscriptions Server v2")
+mcp = FastMCP(
+    "Points & Subscriptions Server v2",
+    host="0.0.0.0",
+    port=8000,
+    allowed_hosts=["web-production-fd7e0.up.railway.app", "localhost"]
+)
 
 API_BASE = "https://jsonplaceholder.typicode.com"
 
